@@ -1,0 +1,27 @@
+.side-bar
+  .header
+    %h3.header__name
+      = current_user.name #現在ログインしているユーザーの名前
+    %ul.header__lists
+      %li.list
+        = link_to '#' do
+          = fa_icon 'edit', class: 'icon'
+      %li.list
+        = link_to edit_user_path(current_user) do
+          = fa_icon 'cogs', class: 'icon'
+  .groups
+    .group
+      .group__name
+        グループ1
+      .group__message
+        最新のメッセージ
+    .group
+      .group__name
+        グループ2
+      .group__message
+        最新のメッセージ
+    .group
+      .group__name
+        グループ3
+      .group__message
+        最新のメッセージ

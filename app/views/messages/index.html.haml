@@ -17,7 +17,7 @@
             メンバー3
       .main-header
         .main-header__button
-          Edit
+          = link_to "Edit",edit_group_path(@group.id), class: 'main-header__button'
     .messages
       = render @messages
       /= render partial: 'message', collection: @messages(省略なし)

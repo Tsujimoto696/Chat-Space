@@ -81,3 +81,7 @@ gem "font-awesome-rails"
 
 # ログイン周りのページを作成するためのdeviseインストール
 gem 'devise'
+
+
+gem 'carrierwave'
+gem 'mini_magick'

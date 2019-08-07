@@ -38,6 +38,11 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'pry-rails'
+  gem 'rspec-rails', '~> 3.5'     #RSpecを利用するため
+  gem 'factory_bot_rails'         #簡単にダミーのインスタンスを作成できる
+  gem 'faker'                     #ダミーデータを作成
+  gem 'rails-controller-testing'  #コントローラのテストに必要
 end
 
 group :development do
@@ -47,6 +52,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rspec'  #開発環境にのみ必要
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -56,17 +62,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # ----------------------------------------------------------
 
 #いずれの環境でも必要
+# ログイン周りのページを作成するためのdeviseインストール
 gem 'devise'
-
-#開発環境にのみ必要
-group :development do 
-     gem 'rspec'
-end
-
-#テスト環境にのみ必要
-group :test do 
-     gem 'rspec'
-end
 
 #本番環境にのみ必要
 group :production do 
@@ -79,11 +76,5 @@ gem 'haml-rails'
 #gem font-awesomeを取得
 gem "font-awesome-rails"
 
-# ログイン周りのページを作成するためのdeviseインストール
-gem 'devise'
-
-
 gem 'carrierwave'
 gem 'mini_magick'
-
-gem 'rspec-rails'

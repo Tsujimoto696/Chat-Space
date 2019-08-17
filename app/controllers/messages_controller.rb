@@ -1,21 +1,17 @@
 class MessagesController < ApplicationController
-  before_action :set_group
+  before_action :set_group#, :set_messages, only: [:index, :create]
 
   def index
     @message = Message.new
-    @messages = @group.messages.includes(:user)
-    #@members = @group.users
-    #respond_to do |format|
-      #format.html
-      #Aformat.json { @messages = @messages.where("id > ?", params[:last_id]) }
-    #end
+    @messages = @group.messages.includes(:user)#.order("created_at DESC")で最新の投稿が一番上にくる
+    @members = @group.users
   end
 
   def create
     @message = @group.messages.new(message_params)
     if @message.save
       respond_to do |format|
-        format.html { redirect_to group_messages_path(@group), notice: 'メッセージが送信されました' }
+        # format.html { redirect_to group_messages_path(@group), notice: 'メッセージが送信されました' }
         format.json
       end
     else
@@ -35,5 +31,6 @@ class MessagesController < ApplicationController
   def set_group
     @group = Group.find(params[:group_id])
   end
+  
 end
 #before_actionを利用して呼び出すことで、messagesコントローラの全てのアクションで@groupを利用できるようになる
